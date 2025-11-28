@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversión de Temperaturas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Conversor de Celsius a Fahrenheit y Kelvin🌡</h2>
+
+    <form id="formulario">
+        <label>Ingresa los grados Celsius:</label><br>
+        <input type="text" id="celsius">
+        <button type="submit">Convertir</button>
+    </form>
+
+    <p id="mensaje"></p>
+    <p id="resultadoFahrenheit"></p>
+    <p id="resultadoKelvin"></p>
+
+    <script>
+        const form = document.getElementById("formulario");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const celsius = document.getElementById("celsius").value;
+            const mensaje = document.getElementById("mensaje");
+            const resultadoFahrenheit = document.getElementById("resultadoFahrenheit");
+            const resultadoKelvin = document.getElementById("resultadoKelvin");
+
+            mensaje.textContent = "";
+            resultadoFahrenheit.textContent = "";
+            resultadoKelvin.textContent = "";
+
+            if (isNaN(celsius) || celsius === "") {
+                mensaje.textContent = "Error: debes ingresar un número.";
+                return;
+            }
+
+            let C = Number(celsius);
+            let fahrenheit = (C * 9/5) + 32;
+            let kelvin = C + 273.15;
+
+            resultadoFahrenheit.textContent = "Grados Fahrenheit: " + fahrenheit;
+            resultadoKelvin.textContent = "Grados Kelvin: " + kelvin;
+        });
+    </script>
+
+</body>
+</html>
